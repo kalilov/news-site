@@ -1,0 +1,12 @@
+.footer-title{
+    color: FFFFF;
+    font: size 18px;;
+}
+.foot{
+    background-color: #151515;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
