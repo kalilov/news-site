@@ -26,7 +26,11 @@ const Header = () => {
                         </li>
                     </ul>
                 </header>
-                <h1 className="header-info">Всё о велоспорте</h1>
+                <div className="header-info">
+                    <div className="line"></div>
+                    <h1 className="header-info-title">fly high <br/>on your bike</h1>
+                    <p className="header-info-slogan">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                </div>
             </div>
         </div>
     );

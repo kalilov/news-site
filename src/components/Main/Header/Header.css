@@ -30,12 +30,29 @@
     cursor: pointer;
 }
 .nav-link:hover{
-    color: rgba(240, 184, 42, 0.987);
+    color: rgb(58, 163, 26);
 }
 .header-info{
+    margin-top: 10rem;
+    text-align: center;
+}
+.header-info-title{
     color: #fff;
     font-size: 72px;
     font-weight: 900;
-    text-align: center;
-    padding-top: 10rem;
+    padding-top: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.line{
+    margin-top: 10rem;
+    background-color: rgb(58, 163, 26);
+    width: 170px;
+    height: 3px;
+    margin: 0 auto;
+}
+.header-info-slogan{
+    color: #fff;
+    font-size: 16px;
 }
