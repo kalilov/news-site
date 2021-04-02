@@ -1,85 +1,54 @@
-import React from 'react';
-import Bi1 from '../../container/img/bisykle1.jpg';
-import Bi2 from '../../container/img/bisykle.jpg';
-import Bi3 from '../../container/img/bisykle2.jpg';
-import Bi4 from '../../container/img/bisykle3.jpg';
-import Bi5 from '../../container/img/bisykle4.jpg';
-import Bi6 from '../../container/img/bisykle5.jpg';
-
-
+import React, {Component}  from 'react';
 import './Main.css'
+import Posty from '../Main/Posty/Posty'
+import axios from '../../apishka/axios-firebase'
 
-const Main = () => {
-    return (
-        <div className="main">
-            <div className="wrapper">
-                <div className="container">
-                    <div className="news-cards">
-                        <div className="news-card">
-                            <img className="bisykle" src={Bi1}/>
-                            <h2 className="heading">ВЕЛОГОНЩИК ИЗ САН-МАРИНО УМЕР В ВОЗРАСТЕ 21 ГОДА ОТ ПОСЛЕДСТВИЙ КОРОНАВИРУСА</h2>
-                            <button className="read-more">Подробнее</button>
-                            <p className="information">
-                                Велогонщик из Сан-Марино Майкл Антонелли скончался в возрасте 21 года. Об этом сообщила пресс-служба команды Mastromarco Sensi Nibali, за которую выступал спортсмен.
-                                Антонелли был госпитализирован 30 ноября после того, как тесты на коронавирус спортсмена и его семьи дали положительный результат. Мать и брат велогонщика были помещены на карантин дома.
-                                Спустя некоторое время Майкл был переведен в реанимацию. 3 декабря он скончался.
-                            </p>
+class Main extends Component {
+    state = {
+        results: []
+    };
+    
+    componentDidMount() {
+        axios.get('/news.json?orderBy="heading"&limitToLast=3')
+        .then (response => {
+            console.log(response.data);
+            const fetchedResults = [];
+            for(let key in response.data){
+                fetchedResults.unshift(
+                    {
+                        ...response.data[key],
+                        id:key
+                    }
+                )
+            }
+            this.setState({results:fetchedResults})
+        });
+    };
+    render() {
+            return (
+                <div className="main">
+                    <div className="wrapper">
+                        <div className="container">
+                            <div className="news-cards">
+                                <div className="news-card">
+                                    {
+                                        this.state.results.length > 0 ?
+                                        this.state.results.map(post => {
+                                            return <Posty 
+                                                        key={post.id} 
+                                                        post={post} 
+                                                        remove={() => { this.handleDeleteElement(post.id) 
+                                                    }}/>
+                                        }) : 
+                                        <h3>Нет постов</h3>
+                                    }       
+                                </div>
+                            </div>   
                         </div>
-                        <div className="news-card">
-                            <img className="bisykle" src={Bi2}/>
-                            <h2 className="heading">ВЕЛОГОНЩИК ИЗ САН-МАРИНО УМЕР В ВОЗРАСТЕ 21 ГОДА ОТ ПОСЛЕДСТВИЙ КОРОНАВИРУСА</h2>
-                            <button className="read-more">Подробнее</button>
-                            <p className="information">
-                                Велогонщик из Сан-Марино Майкл Антонелли скончался в возрасте 21 года. Об этом сообщила пресс-служба команды Mastromarco Sensi Nibali, за которую выступал спортсмен.
-                                Антонелли был госпитализирован 30 ноября после того, как тесты на коронавирус спортсмена и его семьи дали положительный результат. Мать и брат велогонщика были помещены на карантин дома.
-                                Спустя некоторое время Майкл был переведен в реанимацию. 3 декабря он скончался.
-                            </p>
-                        </div>
-                        <div className="news-card">
-                            <img className="bisykle" src={Bi3}/>
-                            <h2 className="heading">ВЕЛОГОНЩИК ИЗ САН-МАРИНО УМЕР В ВОЗРАСТЕ 21 ГОДА ОТ ПОСЛЕДСТВИЙ КОРОНАВИРУСА</h2>
-                            <button className="read-more">Подробнее</button>
-                            <p className="information">
-                                Велогонщик из Сан-Марино Майкл Антонелли скончался в возрасте 21 года. Об этом сообщила пресс-служба команды Mastromarco Sensi Nibali, за которую выступал спортсмен.
-                                Антонелли был госпитализирован 30 ноября после того, как тесты на коронавирус спортсмена и его семьи дали положительный результат. Мать и брат велогонщика были помещены на карантин дома.
-                                Спустя некоторое время Майкл был переведен в реанимацию. 3 декабря он скончался.
-                            </p>
-                        </div>
-                        <div className="news-card">
-                            <img className="bisykle" src={Bi4}/>
-                            <h2 className="heading">ВЕЛОГОНЩИК ИЗ САН-МАРИНО УМЕР В ВОЗРАСТЕ 21 ГОДА ОТ ПОСЛЕДСТВИЙ КОРОНАВИРУСА</h2>
-                            <button className="read-more">Подробнее</button>
-                            <p className="information">
-                                Велогонщик из Сан-Марино Майкл Антонелли скончался в возрасте 21 года. Об этом сообщила пресс-служба команды Mastromarco Sensi Nibali, за которую выступал спортсмен.
-                                Антонелли был госпитализирован 30 ноября после того, как тесты на коронавирус спортсмена и его семьи дали положительный результат. Мать и брат велогонщика были помещены на карантин дома.
-                                Спустя некоторое время Майкл был переведен в реанимацию. 3 декабря он скончался.
-                            </p>
-                        </div>
-                        <div className="news-card">
-                            <img className="bisykle" src={Bi5}/>
-                            <h2 className="heading">ВЕЛОГОНЩИК ИЗ САН-МАРИНО УМЕР В ВОЗРАСТЕ 21 ГОДА ОТ ПОСЛЕДСТВИЙ КОРОНАВИРУСА</h2>
-                            <button className="read-more">Подробнее</button>
-                            <p className="information">
-                                Велогонщик из Сан-Марино Майкл Антонелли скончался в возрасте 21 года. Об этом сообщила пресс-служба команды Mastromarco Sensi Nibali, за которую выступал спортсмен.
-                                Антонелли был госпитализирован 30 ноября после того, как тесты на коронавирус спортсмена и его семьи дали положительный результат. Мать и брат велогонщика были помещены на карантин дома.
-                                Спустя некоторое время Майкл был переведен в реанимацию. 3 декабря он скончался.
-                            </p>
-                        </div>
-                        <div className="news-card">
-                            <img className="bisykle" src={Bi6}/>
-                            <h2 className="heading">ВЕЛОГОНЩИК ИЗ САН-МАРИНО УМЕР В ВОЗРАСТЕ 21 ГОДА ОТ ПОСЛЕДСТВИЙ КОРОНАВИРУСА</h2>
-                            <button className="read-more">Подробнее</button>
-                            <p className="information">
-                                Велогонщик из Сан-Марино Майкл Антонелли скончался в возрасте 21 года. Об этом сообщила пресс-служба команды Mastromarco Sensi Nibali, за которую выступал спортсмен.
-                                Антонелли был госпитализирован 30 ноября после того, как тесты на коронавирус спортсмена и его семьи дали положительный результат. Мать и брат велогонщика были помещены на карантин дома.
-                                Спустя некоторое время Майкл был переведен в реанимацию. 3 декабря он скончался.
-                            </p>
-                        </div>
-                    </div>   
+                    </div>
                 </div>
-            </div>
-        </div>
-    );
-};
+            );
+        };
+    }
 
 export default Main;
