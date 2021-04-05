@@ -12,8 +12,10 @@ function Posty({post, remove}) {
                 height: isOpen ? 'auto' : '0'
             }}>{post.text}</p>
             <div className="email">{post.email}</div>
-            <button className="read-more" onClick={() => setIsOpen(!isOpen)}>Подробнее</button>
-            <button className="delete" onClick={remove}>Удалить</button>
+            <div className="read-delete">
+                <a className="read-more" onClick={() => setIsOpen(!isOpen)}>Подробнее</a>
+                <button className="delete" onClick={remove}>Удалить</button>
+            </div>
         </div>
     );
 }

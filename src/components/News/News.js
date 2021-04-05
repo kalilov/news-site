@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from '../../apishka/axios-firebase'
 import Posty from '../Main/Posty/Posty'
+import './News.css'
 
 class News extends Component {
     
@@ -37,17 +38,19 @@ class News extends Component {
         return (
             <div className="wrapper">
                 <div className="container">
-                    {
-                        this.state.results.length > 0 ?
-                        this.state.results.map(post => {
-                            return <Posty 
-                                        key={post.id} 
-                                        post={post} 
-                                        remove={() =>this.handleDeleteElement(post.id)}
-                                    />
-                        }) : 
-                        <h3>Нет постов</h3>
-                    }
+                    <div className="news-cards">
+                        {
+                            this.state.results.length > 0 ?
+                            this.state.results.map(post => {
+                                return <Posty 
+                                            key={post.id} 
+                                            post={post} 
+                                            remove={() =>this.handleDeleteElement(post.id)}
+                                        />
+                            }) : 
+                            <h3>Нет постов</h3>
+                        }
+                    </div>
                 </div>
             </div>
         );

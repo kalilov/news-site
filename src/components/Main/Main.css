@@ -1,11 +1,11 @@
 .main {
     background: #151515;
-    padding: 120px 15px;
 }
 .news-cards{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
+    padding: 120px 15px;
 }
 .bisykle{
    width: 100%;

@@ -1,3 +1,30 @@
 .information {
     overflow: hidden;
+    color: #fff;
+}
+.heading{
+    color: #fff;
+}
+.email{
+    color: rgb(185, 185, 185);
+}
+.read-delete{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.read-more{
+    cursor: pointer;
+    color:  #f79900;
+    text-decoration:underline;
+}
+.delete{
+    background-color: #f79900;
+    border: none;
+    padding: 5px 10px;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: .5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
